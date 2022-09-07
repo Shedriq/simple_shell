@@ -1,30 +1,27 @@
 #include "shell.h"
 
 /**
-* _strcmp - function that compares two strings.
-* @s1: string 1 to compare.
-* @s2: string 2 to compare.
-* Return: 0 if strings are equal, 1 if strings are different.
-*/
+ * _strncmp - function that compares two strings
+ * @path: string 1 to compare
+ * @match: string 2 to compare
+ * @n: number of characters to take into account
+ * Return: 0 if strings are equal, 1 if strings are different.
+ */
 
-int _strcmp(char *s1, char *s2)
+char *_strncmp(char *path, char *match, size_t n)
 {
-	int k = 0, equal = 0, dif = 0, len1 = _strlen(s1), len2 = _strlen(s2);
-
-	for (k = 0; s1[k] != '\0' && s2[k] != '\0'; k++)
+	while (n && *path && (*path == *match))
 	{
-		if (s1[k] == s2[k])
-		{
-			equal++;
-		}
-		if (s1[k] != s2[k])
-		{
-			dif++;
-		}
+		++path;
+		++match;
+		--n;
 	}
-
-	if (dif > 0 || len1 != len2)
-		return (1);
-
-	return (0);
+	if (n == 0)
+	{
+		return (path);
+	}
+	else
+	{
+		return (NULL);
+	}
 }
