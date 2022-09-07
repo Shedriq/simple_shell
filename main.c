@@ -1,16 +1,19 @@
 #include "shell.h"
+
 /**
-* main - function that checks if our Shell is called
-* in interactive or non-interactive mode.
-* @ac: number of arguments passed (non-interactive)
-* @av: double pointer with arguments passed (non-interactive)
-* Return: 0 on success.
-*/
-int main(int ac, char **av)
+ * main - function that checks if our shell is called
+ *
+ * Return: 0 on success
+ */
+int main(void)
 {
-if (isatty(STDIN_FILENO) == 1)
-shell_interactive();
-else
-shell_no_interactive(ac, av);
-return (0);
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		shell_interactive();
+	}
+	else
+	{
+		shell_non_interactive();
+	}
+	return (0);
 }
